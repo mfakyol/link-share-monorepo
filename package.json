@@ -1,0 +1,38 @@
+{
+  "name": "link-share-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev-api": "npm run dev --prefix apps/api",
+    "build-api": "npm run build --prefix apps/api",
+    "start-api": "npm run start --prefix apps/api",
+    "dev-panel": "npm run dev --prefix apps/panel",
+    "build-panel": "npm run build --prefix apps/panel",
+    "start-panel": "npm run start --prefix apps/panel",
+    "dev-page": "npm run dev --prefix apps/page",
+    "build-page": "npm run build --prefix apps/page",
+    "start-page": "npm run start --prefix apps/page"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
+    "jsonwebtoken": "^8.5.1",
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.4",
+    "slugify": "^1.6.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "sass": "^1.57.1",
+    "eslint": "^8.31.0",
+    "eslint-config-next": "^13.1.1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@link-share/panel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-easy-crop": "^4.6.3",
+    "@packages/lib": "*",
+    "@packages/react-lib": "*"
+  },
+  "devDependencies": {
+
+  }
+}

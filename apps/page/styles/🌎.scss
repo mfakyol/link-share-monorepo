@@ -1,0 +1,67 @@
+:root {
+  --text-primary: "";
+  --bg-primary: #f5f8fa;
+  --bg-secondary: #ffffff;
+  --red: #ff4336;
+  --blue: #0e78d9;
+  --blue-dark: "";
+  --blue-light: "";
+  --box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: Inter;
+  font-weight: 400;
+}
+
+textarea {
+  resize: vertical;
+}
+
+img {
+  border: none;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font-family: Inter;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hideScrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
