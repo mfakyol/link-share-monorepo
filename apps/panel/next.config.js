@@ -3,9 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
 
-  experimental: {
-    transpilePackages: ["@packages/shared"],
-  },
+  transpilePackages: ["@packages/lib", "@packages/react-lib"],
 
   async rewrites() {
     return [

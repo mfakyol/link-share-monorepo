@@ -37,9 +37,11 @@ export default function AppearanceRouter() {
         const profileImage = `avatars/${nanoid()}.${file.mimetype.split("/").pop()}`;
         const filePath = `public/${profileImage}`;
         try {
-          fs.writeFileSync(filePath, file.buffer);
+          if(!fs.existsSync("public/avatars")) fs.mkdirSync("public/avatars", {recursive: true})
+          fs.writeFileSync(filePath, file.buffer,);
         } catch (error) {
-          fs.unlinkSync(filePath);
+          if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+          console.log(error)
           res.statusMessage = "Unknown error occured when upload file.";
           return res.status(500).end();
         }

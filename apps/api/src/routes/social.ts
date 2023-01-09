@@ -13,7 +13,7 @@ export default function SocialRouter() {
     router.post("/", checkAuth, jsonParser, async (req, res) => {
       const { type, href } = req.body;
 
-      console.log(req.body)
+
       if (!type || !href) return res.status(200).json({ status: false, message: "type and href requred in body." });
 
       try {
@@ -101,8 +101,8 @@ export default function SocialRouter() {
     });
     router.post("/style", checkAuth, jsonParser, async (req, res) => {
       const { style } = req.body;
-      console.log(style)
-      if (!["outline", "color"].some(s => s == style)) return res.status(200).json({ status: false, message: "Invalid style." });
+
+      if (!["outline", "color", "fill"].some(s => s == style)) return res.status(200).json({ status: false, message: "Invalid style." });
       try {
         const page = await PageModel.findById(req.authContext?.pageId);
 

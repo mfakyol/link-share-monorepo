@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useCallback, useMemo } from "react";
 import socialListData from "@constants/socialList";
 import ArrowIcon from "@packages/react-lib/icons/ArrowIcon";
+import SocialIcon from "@packages/react-lib/components/SocialIcon";
 
 function NewSocialPopup({ show, setShow, setSelectedSocial }) {
   const socials = useSelector((state) => state.panel.page.socials);
@@ -32,7 +33,7 @@ function NewSocialPopup({ show, setShow, setSelectedSocial }) {
               className={`${classes.socialItem} ${social.isExist ? classes.exist : ""}`}
               onClick={(e) => handleOnClick(e, social)}
             >
-              <img className={classes.socialIcon} src={`/icons/social/color/${social.icon}`} alt="" />
+              <SocialIcon type={social.type} theme="color" className={classes.socialIcon} />
               <span className={classes.socialName}>{social.name}</span>
               {social.isExist ? (
                 <span className={classes.existText}>Exist</span>

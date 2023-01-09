@@ -53,6 +53,12 @@ function EditSocial({ page }) {
         checked={page.styles.social.style == "outline"}
       />
       <RadioButton
+        label="Fill"
+        value="fill"
+        onChange={handleOnChangeStyle}
+        checked={page.styles.social.style == "fill"}
+      />
+      <RadioButton
         label="Color"
         value="color"
         onChange={handleOnChangeStyle}

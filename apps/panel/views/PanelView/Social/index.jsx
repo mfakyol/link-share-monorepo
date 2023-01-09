@@ -1,17 +1,19 @@
-import { apiUrl } from "@packages/lib/config";
-import Switch from "@packages/react-lib/components/Switch";
 import http from "@packages/lib/http";
 import classes from "./style.module.scss";
+import { apiUrl } from "@packages/lib/config";
 import { useState, useCallback } from "react";
 import NewSocialPopup from "./NewSocialPopup";
 import socialList from "@constants/socialList";
 import { Droppable } from "react-beautiful-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import AddOrEditSocialPopup from "./AddOrEditSocialPopup";
+import DragIcon from "@packages/react-lib/icons/DragIcon";
+import Switch from "@packages/react-lib/components/Switch";
+import PencilIcon from "@packages/react-lib/icons/PencilIcon";
 import { DragDropContext, Draggable } from "react-beautiful-dnd";
 import { setPageSocials, setPageSocialShow } from "store/panelSlice";
-import PencilIcon from "@packages/react-lib/icons/PencilIcon";
-import DragIcon from "@packages/react-lib/icons/DragIcon";
+
+import SocialIcon from "@packages/react-lib/components/SocialIcon";
 
 function Social() {
   const dispatch = useDispatch();
@@ -109,11 +111,7 @@ function Social() {
                             <div className={classes.drag} {...provided.dragHandleProps}>
                               <DragIcon className={classes.dragIcon} />
                             </div>
-                            <img
-                              className={classes.socialIcon}
-                              src={`/icons/social/${page.styles.social.style}/${social.type}.svg`}
-                              alt=""
-                            />
+                            <SocialIcon type={social.type} theme="color" className={classes.socialIcon} />
                             <span className={classes.socialName}>{social.name}</span>
                             <PencilIcon className={classes.pencilIcon} onClick={(e) => handleOnClickEdit(e, social)} />
                             <Switch defaultChecked={social.show} onChange={(e) => toggleShowSocial(e, social)} />
