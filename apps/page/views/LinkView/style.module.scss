@@ -103,4 +103,13 @@
 .logoLink {
   display: flex;
   margin-top: 64px;
+
+  & > .logo {
+    height: 32px;
+
+
+    @media (max-width: 767px) {
+      height: 24px;
+    }
+  }
 }

@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import express from "express";
 import jwt from "jsonwebtoken";
-import { slug } from "../lib/slug";
+import  slug  from "@packages/lib/slug";
 import bodyParser from "body-parser";
 import PageModel from "../models/page.model";
 import UserModel from "../models/user.model";

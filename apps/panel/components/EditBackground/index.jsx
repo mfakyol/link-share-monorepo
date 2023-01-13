@@ -2,7 +2,7 @@ import Card from "@components/Card";
 import ColorInput from "@packages/react-lib/components/ColorInput";
 import Input from "@packages/react-lib/components/Input";
 import Label from "@packages/react-lib/components/Label";
-import colorShade from "@lib/colorShade";
+import colorShade from "@packages/lib/colorShade";
 import isColor from "@packages/lib/isColor";
 import { apiUrl } from "@packages/lib/config";
 import { useState } from "react";

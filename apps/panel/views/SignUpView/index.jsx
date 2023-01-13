@@ -8,7 +8,7 @@ import FormPasswordInput from "@packages/react-lib/components/FormComponents/For
 import FormTextInput from "@packages/react-lib/components/FormComponents/FormTextInput";
 import FormTitle from "@packages/react-lib/components/FormComponents/FormTitle";
 import { useCallback, useRef, useState } from "react";
-import slugify from "slugify";
+import slug from "@packages/lib/slug";
 import http from "@packages/lib/http";
 import CheckStatus from "@packages/react-lib/components/CheckStatus";
 import { validateEmail, validatePassword } from "@packages/lib/validators";
@@ -39,7 +39,7 @@ function SignUpView() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     if (controllerRef.current) controllerRef.current.abort();
 
-    const endPoint = slugify(e.target.value.slice(prefix.length), { lower: true });
+    const endPoint = slug(e.target.value.slice(prefix.length));
     setEndPoint(endPoint);
     setEndPointError("");
     if (endPoint?.length < 3) {

@@ -1,9 +1,22 @@
 import Head from "next/head";
-import { apiUrl } from "@packages/lib/config";
-import LinkView from "@views/LinkView";
+import { useEffect } from "react";
 import http from "@packages/lib/http";
+import LinkView from "@views/LinkView";
+import { apiUrl } from "@packages/lib/config";
+import detectDevice from "@packages/lib/detectDevice";
+import detectLanguage from "@packages/lib/detectLanguage";
+import { dispatchEvent } from "@packages/lib/event";
 
 function Link({ profileData }) {
+  useEffect(() => {
+    const payload = {
+      type: "pageLoaded",
+      endPointId: profileData._id,
+    };
+
+    dispatchEvent("tracker", { payload });
+  }, [profileData]);
+
   return (
     <>
       <Head>

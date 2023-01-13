@@ -95,6 +95,11 @@ export const panelSlice = createSlice({
     setPageFontColor: (state, action) => {
       state.page.styles.fontColor = action.payload;
     },
+
+    setSocialIconColor: (state, action) => {
+      state.page.styles.social.color = action.payload;
+    },
+
     setPageFontFamily: (state, action) => {
       state.page.styles.fontFamily = action.payload;
     },
@@ -122,6 +127,7 @@ export const {
   setPageLinkShadowColor,
   setPageLinkStyle,
   setPageFontColor,
+  setSocialIconColor,
   setPageFontFamily,
 } = panelSlice.actions;
 

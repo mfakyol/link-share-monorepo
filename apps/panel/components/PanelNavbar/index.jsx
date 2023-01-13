@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import classes from "./style.module.scss";
-import BurgerIcon from '@packages/react-lib/icons/BurgerIcon'
+import BurgerIcon from "@packages/react-lib/icons/BurgerIcon";
+import LogoSmall from "@packages/react-lib/icons/LogoSmall";
 
 function PanelNavbar() {
   const [show, setShow] = useState(false);
@@ -9,7 +10,7 @@ function PanelNavbar() {
   return (
     <header className={classes.panelNavbar}>
       <Link href="/panel/links" shallow={true} className={classes.logoWrapper}>
-        <img className={classes.logo} src="/logo-small.svg" alt="" />
+        <LogoSmall className={classes.logo} />
       </Link>
 
       <BurgerIcon className={classes.burgerIcon} onClick={() => setShow((prev) => !prev)} />

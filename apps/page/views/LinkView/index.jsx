@@ -4,16 +4,39 @@ import ProfileImage from "@components/ProfileImage";
 import SocialLink from "@components/SocialLink";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
 import colorShade from "@packages/lib/colorShade";
 import Head from "next/head";
-import { useState } from "react";
-import { apiUrl } from "@packages/lib/config";
-import http from "@packages/lib/http";
+import { useState, useCallback } from "react";
+import { apiUrl, panelUrl } from "@packages/lib/config";
+import Logo from "@packages/react-lib/icons/Logo";
+import { dispatchEvent } from "@packages/lib/event";
 
 function LinkView({ page, isInPanel }) {
   const router = useRouter();
   const [showContent, setShowContent] = useState(!page.sensitiveContentAgeLimit);
+
+  const handleOnClick = useCallback(
+    (e, type, id) => {
+      let payload;
+
+      if (type == "link") {
+        payload = {
+          type: "linkClicked",
+          linkId: id,
+          endPointId: page._id,
+        };
+      } else if (type == "social") {
+        payload = {
+          type: "socialClicked",
+          socialId: id,
+          endPointId: page._id,
+        };
+      } else return;
+
+      dispatchEvent("tracker", { payload });
+    },
+    [page._id]
+  );
 
   let profileData = { ...page };
 
@@ -135,10 +158,6 @@ function LinkView({ page, isInPanel }) {
     }
   }, []);
 
-  const reportClick = useCallback(({ endPoint, id, type }) => {
-    http.post(`${apiUrl}/report/click`, { body: { endPoint, id, type } });
-  }, []);
-
   return (
     <>
       {!isInPanel && !showContent && (
@@ -198,7 +217,7 @@ function LinkView({ page, isInPanel }) {
                     href={link.href}
                     title={link.title}
                     style={calculateLinkStyle(profileData)}
-                    onClick={reportClick}
+                    onClick={(e) => handleOnClick(e, "link", link._id)}
                   />
                 ))}
             </div>
@@ -210,20 +229,21 @@ function LinkView({ page, isInPanel }) {
                   <SocialLink
                     key={social.type}
                     social={social}
-                    style={profileData.styles.social.style}
-                    onClick={reportClick}
+                    theme={profileData.styles.social.style}
+                    color={profileData.styles.social.color}
+                    onClick={(e) => handleOnClick(e, "social", social._id)}
                   />
                 ))}
             </div>
           </div>
         </div>
         <Link
-          href={`/?profile=${router.asPath.split("/")[1]}`}
+          href={`${panelUrl}/?profile=${router.asPath.split("/")[1]}`}
           className={classes.logoLink}
           rel="noopener noreferrer nofollow"
           target="_blank"
         >
-          <img src="/logo.svg" alt="logo" />
+          <Logo className={classes.logo} />
         </Link>
       </div>
     </>

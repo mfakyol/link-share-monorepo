@@ -1,6 +1,9 @@
+
 import classes from "./style.module.scss";
 
 function LinkButton({ href, title, onClick, ...rest }) {
+
+
   return (
     <a
       className={classes.link}

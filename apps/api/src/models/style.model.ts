@@ -75,6 +75,11 @@ const StyleSchema = new mongoose.Schema({
       type: String,
       default: "top",
     },
+
+    color: {
+      type: String,
+      default: "#000"
+    }
   },
 });
 

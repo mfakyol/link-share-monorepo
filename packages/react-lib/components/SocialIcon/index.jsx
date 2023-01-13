@@ -54,9 +54,9 @@ const socialIcons = {
   },
 };
 
-function SocialIcon({ className = "", theme = "colored", type }) {
+function SocialIcon({ className = "", theme = "colored", type, ...rest}) {
   const SocialIconComponent = socialIcons[theme][type];
-  return <SocialIconComponent className={`${classes.socialİcon} ${className}`} />;
+  return <SocialIconComponent className={`${classes.socialİcon} ${className}`} {...rest}/>;
 }
 
 export default SocialIcon;

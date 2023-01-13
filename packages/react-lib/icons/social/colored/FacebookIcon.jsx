@@ -3,7 +3,7 @@ import IconWrapper from "../../_IconWrapper";
 function FacebookIcon({ ...props }) {
   return (
     <IconWrapper {...props}>
-      <g clip-path="url(#clip0_24_691)">
+      <g clipPath="url(#clip0_24_691)">
         <path
           d="M28 0H4C1.794 0 0 1.794 0 4V28C0 30.206 1.794 32 4 32H28C30.206 32 32 30.206 32 28V4C32 1.794 30.206 0 28 0Z"
           fill="#1976D2"

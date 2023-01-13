@@ -119,6 +119,25 @@ export default function SocialRouter() {
       }
     });
 
+    router.post("/color", checkAuth, jsonParser, async (req, res) => {
+      const { color } = req.body;
+      if (!color) return res.status(200).json({ status: false, message: "Color required." });
+      try {
+        const page = await PageModel.findById(req.authContext?.pageId);
+
+        if (!page) return res.status(200).json({ status: false, message: "Page not found." });
+
+        page.styles.social.color = color;
+
+        await page.save();
+
+        return res.status(200).json({ status: true });
+      } catch (error) {
+        res.statusMessage = "Unknown error occured.";
+        return res.status(500).end();
+      }
+    })
+
     return router;
   };
 
